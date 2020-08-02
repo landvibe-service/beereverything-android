@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:755033010944:android:70e863ac2733aefa7779e5",
+        "mobilesdk_app_id": "1:755033010944:android:c77539960b3af0337779e5",
         "android_client_info": {
           "package_name": "com.landvibe.beereverything"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "755033010944-oibrbs3ghlrbujc6tv6cil6168qcv7b5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.landvibe.beereverything",
+            "certificate_hash": "866acb1811846da77b8e461c86dd22ddbadd1e6c"
+          }
+        },
         {
           "client_id": "755033010944-ifuebuqgn4hjds7fq75qv6ehju2qf8eq.apps.googleusercontent.com",
           "client_type": 3
