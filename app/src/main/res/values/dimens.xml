@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- beer_list -->
+    <dimen name="width_et_beer_list">230dp</dimen>
+    <dimen name="height_view_beer_list">3dp</dimen>
+    <dimen name="margin_top_view_beer_list">10dp</dimen>
+    <dimen name="margin_bottom_view_beer_list">10dp</dimen>
+    <dimen name="margin_start_rv_beer_list">16dp</dimen>
+    <dimen name="margin_end_rv_beer_list">16dp</dimen>
+
+    <!-- item_beer -->
+    <dimen name="margin_cl_item_beer">10dp</dimen>
+    <dimen name="padding_cl_item_beer">10dp</dimen>
+    <dimen name="width_iv_beer">70dp</dimen>
+    <dimen name="height_iv_beer">70dp</dimen>
+
+</resources>

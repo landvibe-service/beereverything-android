@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">beereverything</string>
+    <string name="beer_list_add_beer_btn">추가</string>
+    <string name="beer_list_delete_all_beer_btn">모두 삭제</string>
 </resources>

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.google.gms.google-services'
 
@@ -23,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 ext{
@@ -30,6 +35,9 @@ ext{
     firebaseAuthVersion = '19.3.2'
     playServicesAuthVersion = '18.1.0'
     fireStoreVersion = '21.5.0'
+    pagingVersion = '2.1.2'
+    lifecycleVersion = '2.2.0'
+    RoomVersion = '2.2.5'
 }
 
 dependencies {
@@ -41,6 +49,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //Room
+    implementation "androidx.room:room-runtime:$RoomVersion"
+    kapt "androidx.room:room-compiler:$RoomVersion"
+
+    //Viewmodel
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    //Paging
+    implementation "androidx.paging:paging-rxjava2:$pagingVersion"
+    implementation "androidx.paging:paging-runtime:$pagingVersion" // For Kotlin use paging-runtime-ktx
+    testImplementation "androidx.paging:paging-common:$pagingVersion" // For Kotlin use paging-common-ktx
 
     //Firebase
     implementation "com.google.firebase:firebase-analytics:$firebaseVersion"
