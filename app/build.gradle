@@ -28,6 +28,7 @@ android {
 ext{
     firebaseVersion = '17.4.4'
     firebaseAuthVersion = '19.3.2'
+    firebaseAuthUIVersion = '6.3.0'
     playServicesAuthVersion = '18.1.0'
     fireStoreVersion = '21.5.0'
 }
@@ -48,6 +49,9 @@ dependencies {
     //FirebaseAuth
     implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
     implementation "com.google.android.gms:play-services-auth:$playServicesAuthVersion"
+
+    // FirebaseUI for Firebase Auth
+    implementation "com.firebaseui:firebase-ui-auth:$firebaseAuthUIVersion"
 
     //FireStore
     implementation "com.google.firebase:firebase-firestore:$fireStoreVersion"
