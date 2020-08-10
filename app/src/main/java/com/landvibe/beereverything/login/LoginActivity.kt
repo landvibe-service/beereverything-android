@@ -15,43 +15,68 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.landvibe.beereverything.MainActivity
 import com.landvibe.beereverything.R
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlin.math.log
 
-class LoginActivity : AppCompatActivity(R.layout.activity_login), View.OnClickListener {
+class LoginActivity :
+    LoginContract.View, AppCompatActivity(R.layout.activity_login), View.OnClickListener {
 
-    private lateinit var googleSignInClient: GoogleSignInClient
+
+    override lateinit var googleSignInClient: GoogleSignInClient
+    override lateinit var gso: GoogleSignInOptions
+    override lateinit var auth: FirebaseAuth
+    private var loginStatus = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        init()
 
         googleSignInButton.setOnClickListener(this)
         googleSignOutButton.setOnClickListener(this)
     }
 
-    private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, 100)
+    override fun init() {
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        auth = FirebaseAuth.getInstance()
     }
 
-    private fun signOut() {
+    override fun signIn() {
+        googleSignInClient.signInIntent.also {
+            startActivityForResult(it, REQUEST_CODE)
+        }
+    }
+
+    override fun signOut() {
         AuthUI.getInstance().signOut(this).addOnCompleteListener {
             Toast.makeText(this, "Sign Out Success!", Toast.LENGTH_SHORT).show()
         }
     }
 
-    override fun onClick(p0: View) {
-        when (p0.id) {
+    override fun checkLoginStatus() {
+        auth.currentUser.also {
+            loginStatus = when (it) {
+                null -> false
+                else -> true
+            }
+        }
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
             R.id.googleSignInButton -> {
                 signIn()
             }
             R.id.googleSignOutButton -> {
-                signOut()
+                checkLoginStatus()
+                when (loginStatus) {
+                    true -> signOut()
+                    else -> Toast.makeText(this, "Sign Out Failed", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -59,15 +84,23 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login), View.OnClickLi
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 100) {
+        if (requestCode == REQUEST_CODE) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
-            if (result!!.isSuccess) {
-                val account = result.signInAccount
-                val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
-                FirebaseAuth.getInstance().signInWithCredential(credential)
+            if (result != null) {
+                if (result.isSuccess) {
+                    val account = result.signInAccount
+                    val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
 
-                Toast.makeText(this, "Sign In Success!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Sign In Success!!", Toast.LENGTH_SHORT).show()
+                    //TODO : MainActivity 가 아닌 다른 Activity 로 넘어가게 해야함 -- 종신
+                    Intent(this, MainActivity::class.java).also {
+                        startActivity(it)
+                    }
+                }
             }
         }
     }
+
+
 }
