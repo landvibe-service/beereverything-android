@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_text_18dp">18dp</dimen>
+    <dimen name="common_text_30dp">30dp</dimen>
+    <dimen name="common_text_50dp">50dp</dimen>
+
+    <dimen name="common_margin_8dp">8dp</dimen>
+    <dimen name="common_margin_24dp">24dp</dimen>
+    <dimen name="common_height_40dp">40dp</dimen>
+
+</resources>
