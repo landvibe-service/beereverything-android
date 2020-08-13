@@ -23,12 +23,21 @@ class BeerDetailActivity : AppCompatActivity() {
         beerViewModel = ViewModelProvider(this).get(BeerDetailViewModel::class.java)
         binding.viewModel = beerViewModel
 
+        observeLiveData()
+        loadBeer()
+    }
+
+    private fun loadBeer() {
         beerId = intent.getIntExtra("beer_id", 0)
         if (beerId == 0) {
             Toast.makeText(this, "not found", Toast.LENGTH_LONG).show()
             finish()
         }
 
+        beerViewModel.loadBeer(beerId)
+    }
+
+    private fun observeLiveData() {
         beerViewModel.beer.observe(this, Observer {
             Toast.makeText(this, "beer loaded", Toast.LENGTH_LONG).show()
         })
@@ -38,7 +47,5 @@ class BeerDetailActivity : AppCompatActivity() {
                 finish()
             }
         })
-
-        beerViewModel.loadBeer(beerId)
     }
 }

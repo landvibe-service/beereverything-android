@@ -12,6 +12,7 @@ import kotlinx.coroutines.*
 class BeerDetailViewModel : ViewModel() {
     private val beerListDao = AppDatabase.instance.beerDao()
 
+    //접근 제한 때문에 _beer에만 값을 세팅해 준다 private에서, observe는 beer로
     private val _beer: MutableLiveData<Beer> = MutableLiveData()
     val beer: LiveData<Beer> = _beer
 
@@ -20,6 +21,7 @@ class BeerDetailViewModel : ViewModel() {
 
     fun loadBeer(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
+            //postvalue랑 아래 setvalue 차이는 구글링 한번 해보도록, io 쓰레드에서 메인으로 갈땐 post해줘야 함
             _beer.postValue(beerListDao.get(id))
         }
     }
