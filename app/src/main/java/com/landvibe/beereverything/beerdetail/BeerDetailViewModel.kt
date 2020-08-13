@@ -1,39 +1,30 @@
 package com.landvibe.beereverything.beerdetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.landvibe.beereverything.common.AppDatabase
-import com.landvibe.beereverything.common.BEER_DATA
 import com.landvibe.beereverything.data.Beer
 import kotlinx.coroutines.*
 
 
 class BeerDetailViewModel : ViewModel() {
-    private val job = Job()
-    private val beerListDao = AppDatabase.instance.beerListDao()
-    lateinit var beer : LiveData<Beer>
+    private val beerListDao = AppDatabase.instance.beerDao()
 
-    fun loadBeerDetail(id : Int) : LiveData<Beer> {
+    private val _beer: MutableLiveData<Beer> = MutableLiveData()
+    val beer: LiveData<Beer> = _beer
 
-        viewModelScope.launch(Dispatchers.Main){
-            beer = beerListDao.get(id)
+    private val _closeButtonClick: MutableLiveData<Boolean> = MutableLiveData(false)
+    val closeButtonClick: LiveData<Boolean> = _closeButtonClick
+
+    fun loadBeer(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _beer.postValue(beerListDao.get(id))
         }
-        return beer
-
-        /*
-        val beer = beerListDao.get(id).let {
-            beerListDao.get(id)
-        }
-        return beer
-         */
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
+    fun close() {
+        _closeButtonClick.value = true
     }
-
-
 }

@@ -1,13 +1,10 @@
 package com.landvibe.beereverything.beerlist
 
 import android.app.Application
-import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
-import com.landvibe.beereverything.beerdetail.BeerDetailActivity
 import com.landvibe.beereverything.common.AppDatabase
 import com.landvibe.beereverything.data.Beer
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +12,7 @@ import kotlinx.coroutines.launch
 
 //DataSource.Factory & LiveData Sample
 class BeerListViewModel(app : Application) : AndroidViewModel(app){
-    private val beerListDao = AppDatabase.instance.beerListDao()
+    private val beerListDao = AppDatabase.instance.beerDao()
     private var beerList : LiveData<PagedList<Beer>>
     init{
         val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
@@ -51,7 +48,7 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
 
     fun clearBeerList(){
         viewModelScope.launch(Dispatchers.IO){
-            AppDatabase.instance.beerListDao().deleteAll()
+            AppDatabase.instance.beerDao().deleteAll()
         }
     }
 

@@ -8,18 +8,18 @@ import androidx.room.*
 
 
 @Dao
-interface BeerListDao {
+interface BeerDao {
     @Query("SELECT * FROM beer")
-    fun getAll(): LiveData<Beer>
+    fun getAll(): List<Beer>
 
     @Query("SELECT * FROM beer ORDER BY name COLLATE NOCASE ASC")
-    fun allBeerListByName() : DataSource.Factory<Int, Beer>
+    fun allBeerListByName(): DataSource.Factory<Int, Beer>
 
     @Query("SELECT * FROM beer ORDER BY id COLLATE NOCASE ASC")
-    fun allBeerListById() : DataSource.Factory<Int, Beer>
+    fun allBeerListById(): DataSource.Factory<Int, Beer>
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
-    fun insert(beer : List<Beer>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(beer: List<Beer>)
 
     @Delete
     fun delete(beer: Beer)
@@ -28,5 +28,5 @@ interface BeerListDao {
     fun deleteAll()
 
     @Query("SELECT * FROM beer WHERE id = :id")
-    fun get(id: Int): LiveData<Beer>
+    fun get(id: Int): Beer
 }
