@@ -46,8 +46,6 @@ class BeerListActivity : AppCompatActivity() {
 
         beerListAdapter.setOnItemClickListener(object : BeerListAdapter.OnItemClickListener{
             override fun onItemClick(view: View, id: Int) {
-                Log.d(TAG, "id : $id")
-
                 val intent = Intent(this@BeerListActivity, BeerDetailActivity::class.java)
                 intent.putExtra("beer_id", id)
                 startActivity(intent)
@@ -55,14 +53,6 @@ class BeerListActivity : AppCompatActivity() {
         })
     }
 
-/*
-    inline fun <reified T>startActivity(context: Context, id : Int){
-        val zCalss = T::class.java
-        val intent = Intent(context, zCalss)
-        intent.putExtra("beer_id", id)
-        context.startActivity(intent)
-    }
-*/
     override fun onDestroy() {
         viewModel.clearBeerList()
         super.onDestroy()

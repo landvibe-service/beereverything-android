@@ -28,5 +28,6 @@ interface BeerListDao {
     fun deleteAll()
 
     @Query("SELECT * FROM beer WHERE id = :id")
-    fun get(id: Int): LiveData<Beer>
+    fun get(id: Int): Beer
 }
+
