@@ -11,11 +11,11 @@ import com.landvibe.beereverything.data.BeerListDao
 //DataSource.Factory & LiveData Sample
 @Database(entities = [Beer::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun beerListDao() : BeerListDao
+    abstract fun beerDao() : BeerListDao
 
     fun insertInit(){
         Log.d(TAG, "insertInit()")
-        beerListDao().insert(
+        beerDao().insert(
             BEER_DATA.map {
                 Beer(
                     id = BEER_DATA.indexOf(it),

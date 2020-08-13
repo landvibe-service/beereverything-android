@@ -8,14 +8,6 @@
         <variable
             name="viewmodel"
             type="com.landvibe.beereverything.beerdetail.BeerDetailViewModel"/>
-
-        <variable
-            name="beerItem"
-            type="com.landvibe.beereverything.data.Beer"/>
-
-        <variable
-            name="activity"
-            type="com.landvibe.beereverything.beerdetail.BeerDetailActivity" />
     </data>
 
     <RelativeLayout
@@ -29,7 +21,7 @@
                 android:id="@+id/back_main_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{()->activity.attachButtonEvents()}"
+                android:onClick="@{()->viewmodel.close()}"
                 android:text="뒤로가기 "/>
         </RelativeLayout>
 
@@ -67,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/beerdetail_name_text"
-                    android:text="id" />
+                    android:text="@{viewmodel.beer.name}" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -88,7 +80,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/beerdetail_desc_text"
-                    android:text="name"/>
+                    android:text="@{Integer.toString(viewmodel.beer.id)}"
+                    />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>

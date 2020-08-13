@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 //DataSource.Factory & LiveData Sample
 class BeerListViewModel(app : Application) : AndroidViewModel(app){
-    private val beerListDao = AppDatabase.instance.beerListDao()
+    private val beerListDao = AppDatabase.instance.beerDao()
     private var beerList : LiveData<PagedList<Beer>>
     init{
         val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
@@ -51,7 +51,7 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
 
     fun clearBeerList(){
         viewModelScope.launch(Dispatchers.IO){
-            AppDatabase.instance.beerListDao().deleteAll()
+            AppDatabase.instance.beerDao().deleteAll()
         }
     }
 

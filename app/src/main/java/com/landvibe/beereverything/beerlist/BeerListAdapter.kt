@@ -30,13 +30,6 @@ class BeerListAdapter(val context: Context) : PagedListAdapter<Beer, BeerListVie
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(it, item!!.id)
-            Toast.makeText(context, "start", Toast.LENGTH_SHORT).show()
-/*
-            val intent = Intent(context, BeerDetailActivity::class.java)
-            intent.putExtra("beer_id", clickedId)
-            Log.d(TAG, "clickedId: $clickedId")
-            context.startActivity(intent)
- */
         }
     }
 

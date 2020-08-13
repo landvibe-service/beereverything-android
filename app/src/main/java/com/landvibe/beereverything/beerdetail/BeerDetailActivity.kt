@@ -2,6 +2,7 @@ package com.landvibe.beereverything.beerdetail
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -12,43 +13,40 @@ import com.landvibe.beereverything.databinding.ActivityBeerdetailBinding
 import kotlinx.android.synthetic.main.activity_beerdetail.*
 
 class BeerDetailActivity  : AppCompatActivity() {
-    private lateinit var viewModel : BeerDetailViewModel
+    private lateinit var beerViewModel: BeerDetailViewModel
+    private var beerId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding : ActivityBeerdetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_beerdetail)
-        viewModel = ViewModelProvider(this).get(BeerDetailViewModel::class.java)
-        var beerId = -1
+        beerViewModel = ViewModelProvider(this).get(BeerDetailViewModel::class.java)
+        binding.viewmodel = beerViewModel
 
-        if(intent.getIntExtra("beer_id", 0) != 0){
-            beerId = intent.getIntExtra("beer_id", 0)
-            Log.d(TAG, "beer_id: $beerId")
-        }
-
-        val beer = viewModel.loadBeerDetail(beerId)
-        Log.d(TAG, "${beer.value!!.name}")
-        Log.d(TAG, "${beer.value!!.id}")
-        Log.d(TAG, "${beer.toString()}")
-        beer.observe(this,
-            Observer {
-                binding.beerItem = it
-
-                Log.d(TAG, "binding - name: ${binding.beerItem?.name}")
-                Log.d(TAG, "binding - id: ${binding.beerItem?.id}")
-                Log.d(TAG, "it - name: ${it.name}")
-                Log.d(TAG, "it - id: ${it.id}")
-            }
-        )
-
-        binding.viewmodel = viewModel
-        binding.lifecycleOwner = this
-        attachButtonEvents()
-        binding.activity = this
+        observeLiveData()
+        loadBeer()
     }
 
 
-    fun attachButtonEvents(){
-        finish()
+    fun loadBeer(){
+        beerId = intent.getIntExtra("beer_id", 0)
+        if (beerId == 0) {
+            Toast.makeText(this, "not found", Toast.LENGTH_LONG).show()
+            finish()
+        }
+
+        beerViewModel.loadBeer(beerId)
+    }
+
+    private fun observeLiveData() {
+        beerViewModel.beer.observe(this, Observer {
+            Toast.makeText(this, "beer loaded", Toast.LENGTH_LONG).show()
+        })
+
+        beerViewModel.closeButtonClick.observe(this, Observer {
+            if (it) {
+                finish()
+            }
+        })
     }
 
     companion object {
