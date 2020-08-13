@@ -1,24 +1,39 @@
 package com.landvibe.beereverything.beerdetail
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.landvibe.beereverything.data.BeerList
-import com.landvibe.beereverything.data.BeerListDB
+import androidx.lifecycle.viewModelScope
+import com.landvibe.beereverything.common.AppDatabase
+import com.landvibe.beereverything.common.BEER_DATA
+import com.landvibe.beereverything.data.Beer
 import kotlinx.coroutines.*
 
 
 class BeerDetailViewModel : ViewModel() {
     private val job = Job()
+    private val beerListDao = AppDatabase.instance.beerListDao()
+    lateinit var beer : LiveData<Beer>
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + job)
-    private val beerListDao = BeerListDB.instance!!.beerListDao()
+    fun loadBeerDetail(id : Int) : LiveData<Beer> {
 
-    fun getBeerDetail(id : Int): LiveData<BeerList> {
-        return beerListDao.get(id)
+        viewModelScope.launch(Dispatchers.Main){
+            beer = beerListDao.get(id)
+        }
+        return beer
+
+        /*
+        val beer = beerListDao.get(id).let {
+            beerListDao.get(id)
+        }
+        return beer
+         */
     }
 
     override fun onCleared() {
         super.onCleared()
         job.cancel()
     }
+
+
 }

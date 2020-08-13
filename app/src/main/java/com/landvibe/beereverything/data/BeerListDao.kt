@@ -2,34 +2,31 @@ package com.landvibe.beereverything.data
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
+
 //import androidx.paging.PagingSource
 
 
 @Dao
 interface BeerListDao {
-    @Query("SELECT * FROM beerlist")
-    fun getAll(): List<BeerList>
+    @Query("SELECT * FROM beer")
+    fun getAll(): LiveData<Beer>
 
-    @Query("SELECT * FROM beerlist ORDER BY name COLLATE NOCASE ASC")
-    fun allBeerListByName() : DataSource.Factory<Int, BeerList>
+    @Query("SELECT * FROM beer ORDER BY name COLLATE NOCASE ASC")
+    fun allBeerListByName() : DataSource.Factory<Int, Beer>
 
-    @Query("SELECT * FROM beerlist ORDER BY id COLLATE NOCASE ASC")
-    fun allBeerListById() : DataSource.Factory<Int, BeerList>
+    @Query("SELECT * FROM beer ORDER BY id COLLATE NOCASE ASC")
+    fun allBeerListById() : DataSource.Factory<Int, Beer>
 
-    @Insert
-    fun insert(beerList : List<BeerList>)
-
-    @Insert
-    fun insert(beerList : BeerList)
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    fun insert(beer : List<Beer>)
 
     @Delete
-    fun delete(beerList: BeerList)
+    fun delete(beer: Beer)
 
-    @Query("SELECT * FROM beerlist WHERE id = :id")
-    fun get(id: Int): LiveData<BeerList>
+    @Query("DELETE from beer")
+    fun deleteAll()
 
+    @Query("SELECT * FROM beer WHERE id = :id")
+    fun get(id: Int): LiveData<Beer>
 }

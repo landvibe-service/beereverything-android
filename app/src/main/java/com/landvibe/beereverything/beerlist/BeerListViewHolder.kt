@@ -1,28 +1,19 @@
 package com.landvibe.beereverything.beerlist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.landvibe.beereverything.R
-import com.landvibe.beereverything.data.BeerList
+import com.landvibe.beereverything.data.Beer
+import com.landvibe.beereverything.databinding.ActivityBeerlistBinding
+import com.landvibe.beereverything.databinding.ItemBeerlistBinding
+import kotlinx.android.synthetic.main.item_beerlist.view.*
 
-class BeerListViewHolder (parent:ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_beerlist, parent, false)) {
-    private val nameView = itemView.findViewById<TextView>(R.id.beer_name)
-    private val idView = itemView.findViewById<TextView>(R.id.beer_id)
-    private var beerList : BeerList? = null
+class BeerListViewHolder (val binding: ItemBeerlistBinding) : RecyclerView.ViewHolder(binding.root){
 
-
-    fun bindTo(beerList: BeerList?){
-        this.beerList = beerList
-        nameView.text = beerList?.name
-        idView.text = beerList?.id.toString()
+    fun bindTo(beer: Beer?){
+        with(binding){
+            beerItem = beer
+        }
     }
-
-    fun clear(){
-        nameView.text = null
-    }
-
-
 }
