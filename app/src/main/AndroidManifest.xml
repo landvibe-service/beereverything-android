@@ -18,8 +18,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".beerlist.BeerListActivity">
-        </activity>
+        <activity android:name=".common.RefreshDbActivity" />
+
+        <activity android:name=".beerlist.BeerListActivity" />
+
         <activity
             android:name=".beerdetail.BeerDetailActivity"
             android:parentActivityName=".beerlist.BeerListActivity">

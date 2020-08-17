@@ -6,9 +6,8 @@ import androidx.room.*
 
 //import androidx.paging.PagingSource
 
-
 @Dao
-interface BeerListDao {
+interface BeerDao {
     @Query("SELECT * FROM beer")
     fun getAll(): LiveData<Beer>
 
@@ -19,15 +18,18 @@ interface BeerListDao {
     fun allBeerListById() : DataSource.Factory<Int, Beer>
 
     @Insert (onConflict = OnConflictStrategy.REPLACE)
-    fun insert(beer : List<Beer>)
+    fun insertBeerList(beerList : List<Beer>)
+
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    fun insertBeer(beer : Beer)
 
     @Delete
-    fun delete(beer: Beer)
+    fun deleteBeer(beer: Beer)
 
     @Query("DELETE from beer")
     fun deleteAll()
 
     @Query("SELECT * FROM beer WHERE id = :id")
-    fun get(id: Int): Beer
+    fun getBeer(id: Int): Beer
 }
 
