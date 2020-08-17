@@ -3,6 +3,7 @@
     package="com.landvibe.beereverything">
 
     <application
+        android:name=".common.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +17,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".beerlist.BeerListActivity">
+        </activity>
+        <activity
+            android:name=".beerdetail.BeerDetailActivity"
+            android:parentActivityName=".beerlist.BeerListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".beerlist.BeerListActivity" />
+        </activity>
+
         <activity android:name=".MainActivity" />
     </application>
 

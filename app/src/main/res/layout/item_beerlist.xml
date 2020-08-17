@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+        name="beerItem"
+        type="com.landvibe.beereverything.data.Beer" />
+
+        <variable
+            name="activity"
+            type="com.landvibe.beereverything.beerlist.BeerListActivity" />
+
+        <variable
+            name="adapter"
+            type="com.landvibe.beereverything.beerlist.BeerListAdapter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@drawable/wrap_item_beerlist"/>
+
+        <ImageView
+            android:id="@+id/beer_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/beer_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/beer_name"
+            android:layout_below="@id/beer_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@{beerItem.name}"/>
+
+        <TextView
+            android:id="@+id/beer_id"
+            android:layout_below="@id/beer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@{Integer.toString(beerItem.id)}"/>
+    </RelativeLayout>
+</layout>
