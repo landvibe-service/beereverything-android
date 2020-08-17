@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.landvibe.beereverything.beerdetail.BeerDetailViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/back_main_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->viewmodel.close()}"
+                android:text="뒤로가기 "/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/beerdetail_img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/beer_icon"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="40dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_below="@+id/beerdetail_img">
+
+            <RelativeLayout
+                android:id="@+id/wrap_beerdetail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/beerdetail_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이름:"
+                    android:layout_marginEnd="10dp"/>
+
+                <TextView
+                    android:id="@+id/beerdetail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/beerdetail_name_text"
+                    android:text="@{viewmodel.beer.name}" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/wrap_beerdetail_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wrap_beerdetail_name">
+
+                <TextView
+                    android:id="@+id/beerdetail_desc_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="설명: "
+                    android:layout_marginEnd="10dp"/>
+
+                <TextView
+                    android:id="@+id/beerdetail_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/beerdetail_desc_text"
+                    android:text="@{Integer.toString(viewmodel.beer.id)}"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</layout>
