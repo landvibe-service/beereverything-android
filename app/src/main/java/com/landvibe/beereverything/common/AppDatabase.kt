@@ -1,21 +1,20 @@
 package com.landvibe.beereverything.common
 
-import android.content.Context
 import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.landvibe.beereverything.data.Beer
-import com.landvibe.beereverything.data.BeerListDao
+import com.landvibe.beereverything.data.BeerDao
 
 //DataSource.Factory & LiveData Sample
 @Database(entities = [Beer::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun beerDao() : BeerListDao
+    abstract fun beerDao(): BeerDao
 
-    fun insertInit(){
+    fun insertInit() {
         Log.d(TAG, "insertInit()")
-        beerDao().insert(
+        beerDao().insertBeerList(
             BEER_DATA.map {
                 Beer(
                     id = BEER_DATA.indexOf(it),

@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">beereverything</string>
 
+    <!-- google login -->
     <string name="signin">Sign In</string>
     <string name="signin_with_google">Sign in with Google</string>
     <string name="signout">Sign out</string>
+
+    <!-- db refresh with firestore -->
+    <string name="db_refresh_clear_db_btn">DB 초기화</string>
+    <string name="db_refresh_load_db_btn">DB 불러오기</string>
+    <string name="db_refresh_add_db_btn">데이터 추가</string>
 </resources>
