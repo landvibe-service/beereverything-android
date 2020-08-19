@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.landvibe.beereverything.MainActivity
 import com.landvibe.beereverything.R
+import com.landvibe.beereverything.beerlist.BeerListActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity :
@@ -93,7 +94,7 @@ class LoginActivity :
 
                     Toast.makeText(this, "Sign In Success!!", Toast.LENGTH_SHORT).show()
                     //TODO : MainActivity 가 아닌 다른 Activity 로 넘어가게 해야함 -- 종신
-                    Intent(this, MainActivity::class.java).also {
+                    Intent(this, BeerListActivity::class.java).also {
                         startActivity(it)
                     }
                 }

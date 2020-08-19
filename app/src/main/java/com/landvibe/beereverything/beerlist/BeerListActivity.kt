@@ -53,6 +53,20 @@ class BeerListActivity : AppCompatActivity() {
         })
     }
 
+    fun sortByName(){
+        viewModel.sortByName().observe(this, Observer{ list ->
+            beerListAdapter.submitList(list)
+            beerlist_recycler_view.layoutManager?.smoothScrollToPosition(beerlist_recycler_view, RecyclerView.State(), 0)
+        })
+    }
+
+    fun sortById(){
+        viewModel.sortById().observe(this, Observer{ list ->
+            beerListAdapter.submitList(list)
+            beerlist_recycler_view.layoutManager?.smoothScrollToPosition(beerlist_recycler_view, RecyclerView.State(), 0)
+        })
+    }
+
     override fun onDestroy() {
         viewModel.clearBeerList()
         super.onDestroy()

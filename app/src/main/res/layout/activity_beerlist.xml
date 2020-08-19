@@ -32,14 +32,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이름순 "
-                android:onClick="@{() -> viewmodel.sortByName()}"/>
+                android:onClick="@{() -> activity.sortByName()}"/>
             <Button
                 android:id="@+id/id_sort_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/name_sort_btn"
                 android:text="Id순 "
-                android:onClick="@{() -> viewmodel.sortById()}"/>
+                android:onClick="@{() -> activity.sortById()}"/>
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
