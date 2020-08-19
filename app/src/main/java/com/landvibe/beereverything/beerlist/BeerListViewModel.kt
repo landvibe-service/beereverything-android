@@ -23,22 +23,38 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
             10
         )
         beerList = pagedListBuilder.build()
+
+    }
+    /*
+      fun sortById(){
+          val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
+              beerListDao.allBeerListById(),
+              10
+          )
+          beerList = pagedListBuilder.build()
+          beerList.value?.dataSource?.invalidate()
+      }
+
+      fun sortByName(){
+          Log.d(TAG, "sortByName()")
+          val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
+              beerListDao.allBeerListByName(),
+              10
+          )
+          beerList = pagedListBuilder.build()
+          beerList.value?.dataSource?.invalidate()
+
+      }
+      */
+
+    fun sortByName() : LiveData<PagedList<Beer>>{
+        val source = beerListDao.allBeerListByName()
+        return LivePagedListBuilder(source, 10).build()
     }
 
-    fun sortById(){
-        val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListById(),
-            10
-        )
-        beerList = pagedListBuilder.build()
-    }
-
-    fun sortByName(){
-        val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListByName(),
-            10
-        )
-        beerList = pagedListBuilder.build()
+    fun sortById() : LiveData<PagedList<Beer>>{
+        val source = beerListDao.allBeerListById()
+        return LivePagedListBuilder(source, 10).build()
     }
 
     fun getBeerListLiveData() = beerList
