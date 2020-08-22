@@ -7,15 +7,15 @@
     <data>
         <variable
             name="adapter"
-            type="com.landvibe.beereverything.beerlist.BeerListAdapter" />
+            type="com.landvibe.beereverything.view.beerlist.BeerListAdapter" />
 
         <variable
             name="viewmodel"
-            type="com.landvibe.beereverything.beerlist.BeerListViewModel" />
+            type="com.landvibe.beereverything.view.beerlist.BeerListViewModel" />
 
         <variable
             name="activity"
-            type="com.landvibe.beereverything.beerlist.BeerListActivity" />
+            type="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
     </data>
 
     <RelativeLayout

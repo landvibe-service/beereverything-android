@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.landvibe.beereverything.R
-import com.landvibe.beereverything.beerlist.BeerListViewModel
 import com.landvibe.beereverything.data.Beer
+import com.landvibe.beereverything.view.beerlist.BeerListViewModel
 import kotlinx.android.synthetic.main.activity_db_refresh.*
 
 class RefreshDbActivity : AppCompatActivity(), View.OnClickListener {

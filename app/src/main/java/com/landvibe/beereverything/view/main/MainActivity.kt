@@ -1,11 +1,12 @@
-package com.landvibe.beereverything
+package com.landvibe.beereverything.view.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.landvibe.beereverything.beerlist.BeerListActivity
+import com.landvibe.beereverything.R
 import com.landvibe.beereverything.common.RefreshDbActivity
+import com.landvibe.beereverything.view.beerlist.BeerListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
