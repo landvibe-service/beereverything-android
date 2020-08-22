@@ -1,15 +1,13 @@
 package com.landvibe.beereverything.beerdetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.landvibe.beereverything.common.AppDatabase
-import com.landvibe.beereverything.common.BEER_DATA
 import com.landvibe.beereverything.data.Beer
-import kotlinx.coroutines.*
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BeerDetailViewModel : ViewModel() {
     private val beerListDao = AppDatabase.instance.beerDao()
@@ -24,7 +22,7 @@ class BeerDetailViewModel : ViewModel() {
     fun loadBeer(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             //postvalue랑 아래 setvalue 차이는 구글링 한번 해보도록, io 쓰레드에서 메인으로 갈땐 post해줘야 함
-            _beer.postValue(beerListDao.get(id))
+            _beer.postValue(beerListDao.getBeer(id))
         }
     }
 
