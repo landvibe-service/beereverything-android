@@ -1,4 +1,4 @@
-package com.landvibe.beereverything.beerdetail
+package com.landvibe.beereverything.view.beerdetail
 
 import android.os.Bundle
 import android.widget.Toast

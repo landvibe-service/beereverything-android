@@ -1,4 +1,4 @@
-package com.landvibe.beereverything.beerlist
+package com.landvibe.beereverything.view.beerlist
 
 import android.content.Context
 import android.view.LayoutInflater

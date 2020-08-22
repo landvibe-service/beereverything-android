@@ -1,4 +1,4 @@
-package com.landvibe.beereverything.beerlist
+package com.landvibe.beereverything.view.beerlist
 
 import androidx.recyclerview.widget.RecyclerView
 import com.landvibe.beereverything.data.Beer

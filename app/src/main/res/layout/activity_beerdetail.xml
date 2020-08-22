@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.landvibe.beereverything.beerdetail.BeerDetailViewModel"/>
+            type="com.landvibe.beereverything.view.beerdetail.BeerDetailViewModel"/>
     </data>
 
     <RelativeLayout

@@ -8,11 +8,11 @@
 
         <variable
             name="activity"
-            type="com.landvibe.beereverything.beerlist.BeerListActivity" />
+            type="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
 
         <variable
             name="adapter"
-            type="com.landvibe.beereverything.beerlist.BeerListAdapter" />
+            type="com.landvibe.beereverything.view.beerlist.BeerListAdapter" />
     </data>
 
     <RelativeLayout

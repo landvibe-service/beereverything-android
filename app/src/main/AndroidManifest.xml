@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.LoginActivity">
+        <activity android:name="com.landvibe.beereverything.view.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,17 +20,17 @@
 
         <activity android:name=".common.RefreshDbActivity" />
 
-        <activity android:name=".beerlist.BeerListActivity" />
+        <activity android:name="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
 
         <activity
-            android:name=".beerdetail.BeerDetailActivity"
-            android:parentActivityName=".beerlist.BeerListActivity">
+            android:name="com.landvibe.beereverything.view.beerdetail.BeerDetailActivity"
+            android:parentActivityName="com.landvibe.beereverything.view.beerlist.BeerListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".beerlist.BeerListActivity" />
+                android:value="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
         </activity>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".view.main.MainActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.landvibe.beereverything.login
+package com.landvibe.beereverything.view.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.landvibe.beereverything.MainActivity
+import com.landvibe.beereverything.view.main.MainActivity
 import com.landvibe.beereverything.R
 import kotlinx.android.synthetic.main.activity_login.*
 
