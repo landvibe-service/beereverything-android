@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="common_text_14dp">14dp</dimen>
     <dimen name="common_text_18dp">18dp</dimen>
     <dimen name="common_text_30dp">30dp</dimen>
     <dimen name="common_text_50dp">50dp</dimen>
 
+    <dimen name="common_margin_5dp">5dp</dimen>
     <dimen name="common_margin_8dp">8dp</dimen>
+    <dimen name="common_margin_10dp">10dp</dimen>
     <dimen name="common_margin_24dp">24dp</dimen>
     <dimen name="common_height_40dp">40dp</dimen>
+
+    <!--beer list item-->
+    <dimen name="beer_list_item_height">164dp</dimen>
+    <dimen name="beer_list_item_width">144dp</dimen>
+    <dimen name="beer_list_item_banner_height">63dp</dimen>
 
 </resources>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="adapter"
             type="com.landvibe.beereverything.view.beerlist.BeerListAdapter" />
@@ -18,38 +18,53 @@
             type="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_background_color_black">
 
-        <RelativeLayout
-            android:id="@+id/sort_btn"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnz_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/beerlist_recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/id_sort_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewmodel.sortById()}"
+                android:text="@string/sort_by_id"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/name_sort_btn"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/name_sort_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이름순 "
-                android:onClick="@{() -> viewmodel.sortByName()}"/>
-            <Button
-                android:id="@+id/id_sort_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/name_sort_btn"
-                android:text="Id순 "
-                android:onClick="@{() -> viewmodel.sortById()}"/>
-        </RelativeLayout>
+                android:onClick="@{() -> viewmodel.sortByName()}"
+                android:text="@string/sort_by_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/beerlist_recycler_view"
-            android:layout_below="@id/sort_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnz_layout"
             app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+            tools:listitem="@layout/item_beerlist" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
