@@ -3,7 +3,6 @@ package com.landvibe.beereverything.common
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,14 +13,14 @@ import kotlinx.android.synthetic.main.activity_db_refresh.*
 
 class RefreshDbActivity : AppCompatActivity(), View.OnClickListener {
 
-    private val TAG = "RefreshDbActivity"
-    private lateinit var viewModel: BeerListViewModel
+    private val TAG = RefreshDbActivity::class.simpleName
+    private lateinit var mViewModel: BeerListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_db_refresh)
 
-        viewModel = ViewModelProvider(this).get(BeerListViewModel::class.java)
+        mViewModel = ViewModelProvider(this).get(BeerListViewModel::class.java)
 
         btn_clear_db.setOnClickListener(this)
         btn_load_db.setOnClickListener(this)
@@ -31,18 +30,18 @@ class RefreshDbActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btn_clear_db -> clearLocalDB()
-            R.id.btn_load_db -> loadFireStore()
+            R.id.btn_clear_db -> clearLocalDB(mViewModel)
+            R.id.btn_load_db -> loadFireStore(mViewModel)
             R.id.btn_add_db -> addDB()
         }
     }
 
-    private fun clearLocalDB() {
+    public fun clearLocalDB(viewModel: BeerListViewModel) {
         viewModel.clearBeerList()
-        Toast.makeText(this, "Data clear", Toast.LENGTH_SHORT).show()
+        Log.d(TAG, "Clear local database")
     }
 
-    private fun loadFireStore() {
+    public fun loadFireStore(viewModel: BeerListViewModel) {
         val db = FirebaseFirestore.getInstance()
         db.collection("beer")
             .get()
@@ -54,11 +53,9 @@ class RefreshDbActivity : AppCompatActivity(), View.OnClickListener {
                     Log.d(TAG, "${document.id} => ${document.data}")
                 }
                 viewModel.insertBeerList(beerList)
-                Toast.makeText(this, "Data load succeeded", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
-                Toast.makeText(this, "Data load failed", Toast.LENGTH_SHORT).show()
             }
     }
 

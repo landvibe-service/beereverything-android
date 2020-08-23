@@ -19,6 +19,7 @@
         android:id="@+id/btn_start_refresh_db_ac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="db 갱신" />
+        android:text="db 갱신"
+        android:visibility="gone"/>
 
 </LinearLayout>
