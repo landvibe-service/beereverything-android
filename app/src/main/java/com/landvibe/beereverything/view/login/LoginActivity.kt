@@ -17,7 +17,7 @@ import com.landvibe.beereverything.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity :
-        LoginContract.View, AppCompatActivity(R.layout.activity_login), View.OnClickListener {
+    LoginContract.View, AppCompatActivity(R.layout.activity_login), View.OnClickListener {
 
 
     override lateinit var googleSignInClient: GoogleSignInClient
@@ -26,6 +26,7 @@ class LoginActivity :
     private var loginStatus = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
         init()
@@ -36,9 +37,9 @@ class LoginActivity :
 
     override fun init() {
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         auth = FirebaseAuth.getInstance()
