@@ -7,4 +7,5 @@
     <color name="main_background_color_white">#ffffff</color>
     <color name="main_background_color_black">#18181b</color>
     <color name="beer_list_item_banner_color">#80111111</color>
+    <color name="wrap_sort_button_border_line">#373737</color>
 </resources>

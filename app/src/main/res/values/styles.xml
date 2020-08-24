@@ -21,6 +21,11 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
+    <style name="SortButton">
+        <item name="android:textSize">@dimen/common_text_14dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
     <!-- Splash Screen theme. -->
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen_background</item>

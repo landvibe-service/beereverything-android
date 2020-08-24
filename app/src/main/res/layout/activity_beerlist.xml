@@ -27,31 +27,38 @@
             android:id="@+id/btnz_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/beerlist_recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_margin="@dimen/common_margin_10dp"
+            tools:ignore="MissingConstraints">
 
             <Button
                 android:id="@+id/id_sort_btn"
+                style="@style/SortButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_margin_5dp"
+                android:background="@drawable/wrap_sort_button"
                 android:onClick="@{() -> viewmodel.sortById()}"
                 android:text="@string/sort_by_id"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/name_sort_btn"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <Button
                 android:id="@+id/name_sort_btn"
+                style="@style/SortButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_margin_5dp"
+                android:background="@drawable/wrap_sort_button"
                 android:onClick="@{() -> viewmodel.sortByName()}"
                 android:text="@string/sort_by_name"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toStartOf="@id/id_sort_btn"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/beerlist_recycler_view"
@@ -64,6 +71,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnz_layout"
             app:spanCount="2"
+            tools:ignore="NotSibling"
             tools:listitem="@layout/item_beerlist" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
