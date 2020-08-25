@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">beereverything</string>
 
+    <string name="banner_beer">beer.</string>
+
     <!-- google login -->
     <string name="signin">Sign In</string>
     <string name="signin_with_google">Sign in with Google</string>
