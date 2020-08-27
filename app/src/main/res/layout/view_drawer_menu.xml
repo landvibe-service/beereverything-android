@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/drawer_menu_black_background_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/wrap_drawer_menu_background">
+
+    <TextView
+        android:id="@+id/nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/drawer_menu_text_line_start_margin"
+        android:layout_marginTop="@dimen/drawer_menu_nick_name_top_margin"
+        android:text="닉네임"
+        android:textColor="@color/drawer_menu_text"
+        android:textSize="@dimen/common_text_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_8dp"
+        android:text="이메일"
+        android:textColor="@color/drawer_menu_gray_text"
+        app:layout_constraintStart_toStartOf="@id/nick_name"
+        app:layout_constraintTop_toBottomOf="@id/nick_name" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/common_margin_30dp"
+        android:background="@color/drawer_menu_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/nick_name"
+        app:layout_constraintTop_toBottomOf="@id/email" />
+
+    <TextView
+        android:id="@+id/beer_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_30dp"
+        android:clickable="true"
+        android:text="@string/beer_book"
+        android:textColor="@color/drawer_menu_text"
+        app:layout_constraintStart_toStartOf="@id/nick_name"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <TextView
+        android:id="@+id/beer_diary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_20dp"
+        android:clickable="true"
+        android:text="@string/beer_diary"
+        android:textColor="@color/drawer_menu_text"
+        app:layout_constraintStart_toStartOf="@id/nick_name"
+        app:layout_constraintTop_toBottomOf="@id/beer_book" />
+
+    <TextView
+        android:id="@+id/event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_20dp"
+        android:clickable="true"
+        android:text="@string/event"
+        android:textColor="@color/drawer_menu_text"
+        app:layout_constraintStart_toStartOf="@id/nick_name"
+        app:layout_constraintTop_toBottomOf="@id/beer_diary" />
+
+    <TextView
+        android:id="@+id/log_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/drawer_menu_log_out_bottom_margin"
+        android:text="@string/logout"
+        android:textColor="@color/drawer_menu_gray_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/nick_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
