@@ -8,4 +8,7 @@
     <color name="main_background_color_black">#18181b</color>
     <color name="beer_list_item_banner_color">#80111111</color>
     <color name="wrap_sort_button_border_line">#373737</color>
+    <color name="drawer_menu_line">#373737</color>
+    <color name="drawer_menu_text">#f0f0f2</color>
+    <color name="drawer_menu_gray_text">#8b8b8d</color>
 </resources>

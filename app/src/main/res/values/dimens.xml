@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="common_text_12dp">12dp</dimen>
     <dimen name="common_text_14dp">14dp</dimen>
     <dimen name="common_text_18dp">18dp</dimen>
+    <dimen name="common_text_20dp">20dp</dimen>
     <dimen name="common_text_30dp">30dp</dimen>
     <dimen name="common_text_50dp">50dp</dimen>
 
     <dimen name="common_margin_5dp">5dp</dimen>
     <dimen name="common_margin_8dp">8dp</dimen>
     <dimen name="common_margin_10dp">10dp</dimen>
+    <dimen name="common_margin_15dp">15dp</dimen>
+    <dimen name="common_margin_20dp">20dp</dimen>
     <dimen name="common_margin_24dp">24dp</dimen>
+    <dimen name="common_margin_26dp">26dp</dimen>
+    <dimen name="common_margin_30dp">30dp</dimen>
     <dimen name="common_height_40dp">40dp</dimen>
+    <dimen name="common_height_56dp">56dp</dimen>
 
     <!--beer list item-->
     <dimen name="beer_list_item_height">164dp</dimen>
     <dimen name="beer_list_item_width">144dp</dimen>
     <dimen name="beer_list_item_banner_height">63dp</dimen>
+
+    <!-- drawer menu -->
+    <dimen name="drawer_menu_black_background_width">290dp</dimen>
+    <dimen name="drawer_menu_nick_name_top_margin">70dp</dimen>
+    <dimen name="drawer_menu_text_line_start_margin">30dp</dimen>
+    <dimen name="drawer_menu_log_out_bottom_margin">40dp</dimen>
+
+
+
 
 </resources>
