@@ -12,7 +12,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.landvibe.beereverything.MainActivity
 import com.landvibe.beereverything.R
 import com.landvibe.beereverything.beerlist.BeerListActivity
 import kotlinx.android.synthetic.main.activity_login.*

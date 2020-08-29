@@ -1,13 +1,9 @@
 package com.landvibe.beereverything.beerlist
 
 import android.content.Context
-import android.content.Intent
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.landvibe.beereverything.data.Beer
