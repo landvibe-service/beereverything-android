@@ -103,7 +103,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/beerlist_recycler_view"
             android:layout_width="wrap_content"
