@@ -10,7 +10,9 @@ import com.landvibe.beereverything.data.Beer
 import com.landvibe.beereverything.databinding.ItemBeerlistBinding
 
 //DataSource.Factory & LiveData Sample
-class BeerListAdapter(val context: Context) : PagedListAdapter<Beer, BeerListViewHolder>(DIFF_CALLBACK){
+class BeerListAdapter(val context: Context) : PagedListAdapter<Beer, BeerListViewHolder>(
+    DIFF_CALLBACK
+){
     lateinit var listener : OnItemClickListener
 
 
@@ -43,7 +45,7 @@ class BeerListAdapter(val context: Context) : PagedListAdapter<Beer, BeerListVie
                 oldItem.id == newItem.id
 
             override fun areContentsTheSame(oldItem: Beer, newItem: Beer): Boolean =
-               oldItem == newItem
+                oldItem == newItem
         }
     }
 
