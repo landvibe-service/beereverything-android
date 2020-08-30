@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="adapter"
             type="com.landvibe.beereverything.view.beerlist.BeerListAdapter" />
@@ -82,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/common_margin_5dp"
                 android:background="@drawable/wrap_sort_button"
-                android:onClick="@{() -> viewmodel.sortById()}"
+                android:onClick="@{() -> activity.sortById()}"
                 android:text="@string/sort_by_id"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,14 +95,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/common_margin_5dp"
                 android:background="@drawable/wrap_sort_button"
-                android:onClick="@{() -> viewmodel.sortByName()}"
+                android:onClick="@{() -> activity.sortByName()}"
                 android:text="@string/sort_by_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/id_sort_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/beerlist_recycler_view"
