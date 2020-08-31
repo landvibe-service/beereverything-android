@@ -11,4 +11,6 @@
     <color name="drawer_menu_line">#373737</color>
     <color name="drawer_menu_text">#f0f0f2</color>
     <color name="drawer_menu_gray_text">#8b8b8d</color>
+    <color name="search_hint_text">#f0f0f2</color>
+    <color name="search_under_yellow_line">#daff00</color>
 </resources>
