@@ -3,11 +3,13 @@
 
     <dimen name="common_text_12dp">12dp</dimen>
     <dimen name="common_text_14dp">14dp</dimen>
+    <dimen name="common_text_16dp">16dp</dimen>
     <dimen name="common_text_18dp">18dp</dimen>
     <dimen name="common_text_20dp">20dp</dimen>
     <dimen name="common_text_30dp">30dp</dimen>
     <dimen name="common_text_50dp">50dp</dimen>
 
+    <dimen name="common_margin_2dp">2dp</dimen>
     <dimen name="common_margin_5dp">5dp</dimen>
     <dimen name="common_margin_8dp">8dp</dimen>
     <dimen name="common_margin_10dp">10dp</dimen>
@@ -30,7 +32,9 @@
     <dimen name="drawer_menu_text_line_start_margin">30dp</dimen>
     <dimen name="drawer_menu_log_out_bottom_margin">40dp</dimen>
 
-
+    <!-- search menu -->
+    <dimen name="search_menu_height">56dp</dimen>
+    <dimen name="search_menu_under_line">1dp</dimen>
 
 
 </resources>

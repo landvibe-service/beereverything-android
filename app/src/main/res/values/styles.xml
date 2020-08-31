@@ -37,4 +37,10 @@
         <item name="android:windowBackground">@drawable/splash_screen_background</item>
     </style>
 
+    <style name="SearchHintTheme">
+        <item name="android:textColorHint">@color/search_hint_text</item>
+        <item name="android:textColor">@color/main_background_color_white</item>
+        <item name="android:textSize">@dimen/common_text_16dp</item>
+    </style>
+
 </resources>
