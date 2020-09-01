@@ -35,6 +35,7 @@
     <dimen name="drawer_menu_nick_name_top_margin">70dp</dimen>
     <dimen name="drawer_menu_text_line_start_margin">30dp</dimen>
     <dimen name="drawer_menu_log_out_bottom_margin">40dp</dimen>
+    <dimen name="drawer_menu_elevation">30dp</dimen>
 
     <!-- search menu -->
     <dimen name="search_menu_height">56dp</dimen>
