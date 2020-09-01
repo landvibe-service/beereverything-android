@@ -62,6 +62,15 @@ class BeerListActivity : AppCompatActivity() {
         search_button_layout.visibility = View.GONE
     }
 
+    fun clickHamburgerButton() {
+        drawer_layout.visibility = View.VISIBLE
+        drawer_background_layout.visibility = View.VISIBLE
+    }
+    fun closeDrawerLayout(){
+        drawer_layout.visibility = View.GONE
+        drawer_background_layout.visibility = View.GONE
+    }
+
     fun sortByName() {
         viewModel.sortByName()
         observeLiveData()
