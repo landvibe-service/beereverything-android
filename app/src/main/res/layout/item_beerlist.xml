@@ -27,7 +27,7 @@
             android:id="@+id/beer_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/beer_icon"/>
+            android:src="@drawable/beer_icon" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/beer_list_banner"
@@ -36,41 +36,62 @@
             android:background="@drawable/wrap_item_beer_list_bottom_banner"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:id="@+id/beer_country"
-                style="@style/BeerItemCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:id="@+id/beer_list_banner_top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/beer_list_item_banner_top_height"
                 android:layout_marginStart="@dimen/common_margin_10dp"
                 android:layout_marginTop="@dimen/common_margin_10dp"
-                android:hint="@string/hint_beer_country"
-                android:textAppearance="@style/BeerItemCountry"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/beer_name"
-                style="@style/BeerItemName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/beer_country"
+                    style="@style/BeerItemCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_beer_country"
+                    android:text="@{beerItem.country}" />
+
+                <TextView
+                    android:id="@+id/beer_volume"
+                    style="@style/BeerItemVolume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/common_margin_5dp"
+                    android:hint="@string/hint_beer_volume"
+                    android:text="@{Double.toString(beerItem.volume)}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/beer_list_banner_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/beer_list_item_banner_bottom_height"
                 android:layout_marginStart="@dimen/common_margin_10dp"
                 android:layout_marginTop="@dimen/common_margin_5dp"
                 android:layout_marginBottom="10dp"
-                android:hint="@string/hint_beer_name"
-                android:text="@{beerItem.name}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/beer_country" />
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/beer_list_banner_top">
 
-            <TextView
-                android:id="@+id/beer_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margin_10dp"
-                android:layout_marginEnd="@dimen/common_margin_10dp"
-                android:hint="@string/hint_beer_id"
-                android:text="@{Integer.toString(beerItem.id)}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/beer_name"
+                    style="@style/BeerItemName"
+                    android:layout_width="@dimen/beer_list_item_beer_name_width"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_beer_name"
+                    android:text="@{beerItem.name}" />
+
+                <TextView
+                    android:id="@+id/beer_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/beer_list_item_beer_score_start_margin"
+                    android:hint="@string/hint_beer_score"
+                    android:visibility="gone" />
+
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
