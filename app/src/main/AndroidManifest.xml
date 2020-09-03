@@ -12,17 +12,21 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme" />
-        <activity android:name=".common.RefreshDbActivity" />
-        <activity android:name=".view.beerlist.BeerListActivity" />
+        <activity
+            android:name=".common.RefreshDbActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.beerlist.BeerListActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.beerdetail.BeerDetailActivity"
-            android:parentActivityName=".view.beerlist.BeerListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
-        </activity>
-        <activity android:name=".view.main.MainActivity">
+            android:parentActivityName=".view.beerlist.BeerListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

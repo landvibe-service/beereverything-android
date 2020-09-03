@@ -10,16 +10,16 @@ interface BeerDao {
     fun getAll(): LiveData<Beer>
 
     @Query("SELECT * FROM beer ORDER BY name COLLATE NOCASE ASC")
-    fun allBeerListByName() : DataSource.Factory<Int, Beer>
+    fun allBeerListByName(): DataSource.Factory<Int, Beer>
 
     @Query("SELECT * FROM beer ORDER BY id COLLATE NOCASE ASC")
-    fun allBeerListById() : DataSource.Factory<Int, Beer>
+    fun allBeerListById(): DataSource.Factory<Int, Beer>
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
-    fun insertBeerList(beerList : List<Beer>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertBeerList(beerList: List<Beer>)
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
-    fun insertBeer(beer : Beer)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertBeer(beer: Beer)
 
     @Delete
     fun deleteBeer(beer: Beer)
@@ -31,6 +31,6 @@ interface BeerDao {
     fun getBeer(id: Int): Beer
 
     @Query("SELECT * FROM beer WHERE name LIKE :searchText")
-    fun searchBeer(searchText : String) : DataSource.Factory<Int, Beer>
+    fun searchBeer(searchText: String): DataSource.Factory<Int, Beer>
 }
 
