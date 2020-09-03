@@ -2,6 +2,7 @@ package com.landvibe.beereverything.view.beerlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -42,9 +43,17 @@ class BeerListActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
+        viewModel.searchText.observe(this, object : Observer<String> {
+            override fun onChanged(t: String) {
+                observeLiveData()
+            }
+        })
     }
 
     private fun observeLiveData() {
+        Log.d(TAG, "observeLiveData()")
+
         viewModel.beerList.observe(this, Observer {
             it?.let {
                 beerListAdapter.submitList(it)
@@ -60,12 +69,14 @@ class BeerListActivity : AppCompatActivity() {
     fun clickSearchCancelButton() {
         upper_menu_layout.visibility = View.VISIBLE
         search_button_layout.visibility = View.GONE
+        viewModel.searchCancel()
     }
 
     fun clickHamburgerButton() {
         drawer_layout.visibility = View.VISIBLE
         drawer_background_layout.visibility = View.VISIBLE
     }
+
     fun closeDrawerLayout(){
         drawer_layout.visibility = View.GONE
         drawer_background_layout.visibility = View.GONE
