@@ -1,6 +1,7 @@
 package com.landvibe.beereverything.view.beerlist
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -15,6 +16,8 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
     private val beerListDao = AppDatabase.instance.beerDao()
 
     private var _beerList : MutableLiveData<LiveData<PagedList<Beer>>> = MutableLiveData()
+    var searchText : MutableLiveData<String> = MutableLiveData()
+
     var beerList : LiveData<PagedList<Beer>> = Transformations.switchMap(_beerList){
         getBeerListLiveData()
     }
@@ -25,8 +28,12 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
         beerList = pagedListBuilder.build()
     }
 
+    private var _searchText = Observer<String> {searchBeer(it)}
+    init {
+        searchText.observeForever(_searchText)
+    }
+
     fun sortByName(){
-        //_beerlist의 값을 update
         val list = LivePagedListBuilder<Int, Beer>(
             beerListDao.allBeerListByName(),
             10
@@ -42,19 +49,23 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
         beerList = list
     }
 
+    fun searchBeer(input : String){
+        Log.d(TAG, "input: $input")
+        val list = LivePagedListBuilder<Int, Beer>(
+            beerListDao.searchBeer("%"+ input + "%"), 10
+        ).build()
+        beerList = list
+    }
+
+    fun searchCancel(){
+        val list =  LivePagedListBuilder<Int, Beer>(
+            beerListDao.allBeerListById(),
+            10
+        ).build()
+        beerList = list
+    }
+
     fun getBeerListLiveData() = beerList
-
-    fun loadInit() {
-        viewModelScope.launch(Dispatchers.IO) {
-            AppDatabase.instance.insertInit()
-        }
-    }
-
-    fun insertBeer(beer: Beer) {
-        viewModelScope.launch(Dispatchers.IO) {
-            AppDatabase.instance.beerDao().insertBeer(beer)
-        }
-    }
 
     fun insertBeerList(beerList: List<Beer>) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -71,4 +82,6 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
     companion object {
         private const val TAG = "BeerListViewModel"
     }
+
+
 }
