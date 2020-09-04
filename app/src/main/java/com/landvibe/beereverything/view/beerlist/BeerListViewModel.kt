@@ -1,12 +1,8 @@
 package com.landvibe.beereverything.view.beerlist
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.landvibe.beereverything.common.AppDatabase
 import com.landvibe.beereverything.data.Beer
 import kotlinx.coroutines.Dispatchers
@@ -15,13 +11,11 @@ import kotlinx.coroutines.launch
 class BeerListViewModel(app: Application) : AndroidViewModel(app) {
     private val beerListDao = AppDatabase.instance.beerDao()
 
-    var beerList: LiveData<PagedList<Beer>> = LivePagedListBuilder<Int, Beer>(
-        beerListDao.allBeerListById(),
-        10
-    ).build()
+    private val _sortType = MutableLiveData<SortType>(SortType.ID)
 
     private var _searchText: MutableLiveData<String> = MutableLiveData()
-    var searchText: LiveData<String> = _searchText
+
+    private val beerMeta = MediatorLiveData<Pair<String, SortType>>()
 
     private val _sideMenuOpen: MutableLiveData<Boolean> = MutableLiveData(false)
     val sideMenuOpen: LiveData<Boolean> = _sideMenuOpen
@@ -29,41 +23,49 @@ class BeerListViewModel(app: Application) : AndroidViewModel(app) {
     private val _isSearchMode: MutableLiveData<Boolean> = MutableLiveData(false)
     val isSearchMode: LiveData<Boolean> = _isSearchMode
 
+    val beerList = beerMeta.switchMap {
+        when (it.second) {
+            SortType.ID -> {
+                LivePagedListBuilder<Int, Beer>(
+                    beerListDao.allBeerListById("%${it.first}%"), 10
+                ).build()
+            }
+
+            else -> {
+                LivePagedListBuilder<Int, Beer>(
+                    beerListDao.allBeerListByName("%${it.first}%"), 10
+                ).build()
+            }
+        }
+    }
+
+    init {
+        beerMeta.apply {
+            addSource(_searchText) {
+                beerMeta.value = Pair(it, _sortType.value ?: SortType.ID)
+            }
+
+            addSource(_sortType) {
+                beerMeta.value = Pair(_searchText.value ?: "", it)
+            }
+        }
+    }
+
     fun setSideMenu(visible: Boolean) {
         _sideMenuOpen.value = visible
     }
 
     fun setSearchMode(enable: Boolean) {
         _isSearchMode.value = enable
+        _searchText.value = ""
     }
 
-    fun sortByName() {
-        beerList = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListByName(),
-            10
-        ).build()
+    fun sort(type: SortType) {
+        _sortType.value = type
     }
 
-    fun sortById() {
-        beerList = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListById(),
-            10
-        ).build()
-
-    }
-
-    fun searchBeer(input: String) {
+    fun search(input: String) {
         _searchText.value = input
-        beerList = LivePagedListBuilder<Int, Beer>(
-            beerListDao.searchBeer("%$input%"), 10
-        ).build()
-    }
-
-    fun searchCancel() {
-        beerList = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListById(),
-            10
-        ).build()
     }
 
     fun insertBeerList(beerList: List<Beer>) {
@@ -77,4 +79,9 @@ class BeerListViewModel(app: Application) : AndroidViewModel(app) {
             AppDatabase.instance.beerDao().deleteAll()
         }
     }
+
+    enum class SortType {
+        NAME, ID
+    }
 }
+

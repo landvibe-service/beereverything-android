@@ -1,19 +1,15 @@
 package com.landvibe.beereverything.data
 
-import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 
 @Dao
 interface BeerDao {
-    @Query("SELECT * FROM beer")
-    fun getAll(): LiveData<Beer>
+    @Query("SELECT * FROM beer WHERE name LIKE :query ORDER BY name COLLATE NOCASE ASC")
+    fun allBeerListByName(query: String): DataSource.Factory<Int, Beer>
 
-    @Query("SELECT * FROM beer ORDER BY name COLLATE NOCASE ASC")
-    fun allBeerListByName(): DataSource.Factory<Int, Beer>
-
-    @Query("SELECT * FROM beer ORDER BY id COLLATE NOCASE ASC")
-    fun allBeerListById(): DataSource.Factory<Int, Beer>
+    @Query("SELECT * FROM beer WHERE name LIKE :query ORDER BY id COLLATE NOCASE ASC")
+    fun allBeerListById(query: String): DataSource.Factory<Int, Beer>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertBeerList(beerList: List<Beer>)
@@ -29,8 +25,5 @@ interface BeerDao {
 
     @Query("SELECT * FROM beer WHERE id = :id")
     fun getBeer(id: Int): Beer
-
-    @Query("SELECT * FROM beer WHERE name LIKE :searchText")
-    fun searchBeer(searchText: String): DataSource.Factory<Int, Beer>
 }
 

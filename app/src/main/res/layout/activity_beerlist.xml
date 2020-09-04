@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.landvibe.beereverything.view.beerlist.BeerListViewModel.SortType" />
+
         <variable
             name="viewmodel"
             type="com.landvibe.beereverything.view.beerlist.BeerListViewModel" />
@@ -37,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/fui_transparent"
                 android:hint="@string/search_hint"
-                android:text="@{viewmodel.searchText}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -149,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/common_margin_5dp"
                 android:background="@drawable/wrap_sort_button"
-                android:onClick="@{()->viewmodel.sortById()}"
+                android:onClick="@{()->viewmodel.sort(SortType.ID)}"
                 android:text="@string/sort_by_id"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/common_margin_5dp"
                 android:background="@drawable/wrap_sort_button"
-                android:onClick="@{()->viewmodel.sortByName()}"
+                android:onClick="@{()->viewmodel.sort(SortType.NAME)}"
                 android:text="@string/sort_by_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/id_sort_btn"
