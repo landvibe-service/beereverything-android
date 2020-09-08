@@ -1,71 +1,72 @@
 package com.landvibe.beereverything.view.beerlist
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.landvibe.beereverything.common.AppDatabase
 import com.landvibe.beereverything.data.Beer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
-//DataSource.Factory & LiveData Sample
-class BeerListViewModel(app : Application) : AndroidViewModel(app){
+class BeerListViewModel(app: Application) : AndroidViewModel(app) {
     private val beerListDao = AppDatabase.instance.beerDao()
 
-    private var _beerList : MutableLiveData<LiveData<PagedList<Beer>>> = MutableLiveData()
-    var searchText : MutableLiveData<String> = MutableLiveData()
+    private val _sortType = MutableLiveData<SortType>(SortType.ID)
 
-    var beerList : LiveData<PagedList<Beer>> = Transformations.switchMap(_beerList){
-        getBeerListLiveData()
+    private var _searchText: MutableLiveData<String> = MutableLiveData()
+
+    private val beerMeta = MediatorLiveData<Pair<String, SortType>>()
+
+    private val _sideMenuOpen: MutableLiveData<Boolean> = MutableLiveData(false)
+    val sideMenuOpen: LiveData<Boolean> = _sideMenuOpen
+
+    private val _isSearchMode: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isSearchMode: LiveData<Boolean> = _isSearchMode
+
+    val beerList = beerMeta.switchMap {
+        when (it.second) {
+            SortType.ID -> {
+                LivePagedListBuilder<Int, Beer>(
+                    beerListDao.allBeerListById("%${it.first}%"), 10
+                ).build()
+            }
+
+            else -> {
+                LivePagedListBuilder<Int, Beer>(
+                    beerListDao.allBeerListByName("%${it.first}%"), 10
+                ).build()
+            }
+        }
     }
+
     init {
-        val pagedListBuilder : LivePagedListBuilder<Int, Beer> = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListById(),
-            10)
-        beerList = pagedListBuilder.build()
+        beerMeta.apply {
+            addSource(_searchText) {
+                beerMeta.value = Pair(it, _sortType.value ?: SortType.ID)
+            }
+
+            addSource(_sortType) {
+                beerMeta.value = Pair(_searchText.value ?: "", it)
+            }
+        }
     }
 
-    private var _searchText = Observer<String> {searchBeer(it)}
-    init {
-        searchText.observeForever(_searchText)
+    fun setSideMenu(visible: Boolean) {
+        _sideMenuOpen.value = visible
     }
 
-    fun sortByName(){
-        val list = LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListByName(),
-            10
-        ).build()
-        beerList = list
+    fun setSearchMode(enable: Boolean) {
+        _isSearchMode.value = enable
+        _searchText.value = ""
     }
 
-    fun sortById(){
-        val list =  LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListById(),
-            10
-        ).build()
-        beerList = list
+    fun sort(type: SortType) {
+        _sortType.value = type
     }
 
-    fun searchBeer(input : String){
-        Log.d(TAG, "input: $input")
-        val list = LivePagedListBuilder<Int, Beer>(
-            beerListDao.searchBeer("%"+ input + "%"), 10
-        ).build()
-        beerList = list
+    fun search(input: String) {
+        _searchText.value = input
     }
-
-    fun searchCancel(){
-        val list =  LivePagedListBuilder<Int, Beer>(
-            beerListDao.allBeerListById(),
-            10
-        ).build()
-        beerList = list
-    }
-
-    fun getBeerListLiveData() = beerList
 
     fun insertBeerList(beerList: List<Beer>) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -73,15 +74,14 @@ class BeerListViewModel(app : Application) : AndroidViewModel(app){
         }
     }
 
-    fun clearBeerList(){
-        viewModelScope.launch(Dispatchers.IO){
+    fun clearBeerList() {
+        viewModelScope.launch(Dispatchers.IO) {
             AppDatabase.instance.beerDao().deleteAll()
         }
     }
 
-    companion object {
-        private const val TAG = "BeerListViewModel"
+    enum class SortType {
+        NAME, ID
     }
-
-
 }
+
