@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="beerItem"
             type="com.landvibe.beereverything.data.Beer" />
-
-        <variable
-            name="activity"
-            type="com.landvibe.beereverything.view.beerlist.BeerListActivity" />
-
-        <variable
-            name="adapter"
-            type="com.landvibe.beereverything.view.beerlist.BeerListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
