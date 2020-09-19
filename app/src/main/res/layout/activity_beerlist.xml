@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/search_menu_under_line"
                 android:layout_marginBottom="@dimen/common_margin_2dp"
-                android:background="@color/search_under_yellow_line"
+                android:background="@color/yellow_background"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
