@@ -34,4 +34,6 @@
 
     <!--search menu-->
     <string name="search_hint">검색어를 입력해주세요</string>
+    <string name="country">국가 :</string>
+    <string name="volume">도수 :</string>
 </resources>
