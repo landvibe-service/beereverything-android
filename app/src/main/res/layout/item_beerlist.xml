@@ -9,13 +9,15 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/beer_list_item_width"
-        android:layout_height="@dimen/beer_list_item_height"
-        android:layout_margin="@dimen/common_margin_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="6dp"
         android:background="@drawable/wrap_item_beer_list">
 
         <ImageView
             android:id="@+id/beer_img"
+            android:scaleType="fitCenter"
+            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/beer_icon" />
@@ -69,7 +71,7 @@
                 <TextView
                     android:id="@+id/beer_name"
                     style="@style/BeerItemName"
-                    android:layout_width="@dimen/beer_list_item_beer_name_width"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_beer_name"
                     android:text="@{beerItem.name}" />

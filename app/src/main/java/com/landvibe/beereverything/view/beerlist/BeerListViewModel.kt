@@ -5,8 +5,7 @@ import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import com.landvibe.beereverything.common.AppDatabase
 import com.landvibe.beereverything.data.Beer
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.landvibe.beereverything.data.sync.BeerSyncManager
 
 class BeerListViewModel(app: Application) : AndroidViewModel(app) {
     private val beerListDao = AppDatabase.instance.beerDao()
@@ -51,6 +50,14 @@ class BeerListViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun syncBeerListIfNeed() {
+        BeerSyncManager.syncBeerListIfNeed({
+            beerMeta.value = Pair(_searchText.value ?: "", _sortType.value ?: SortType.ID)
+        }, {
+            //sync fail
+        })
+    }
+
     fun setSideMenu(visible: Boolean) {
         _sideMenuOpen.value = visible
     }
@@ -66,18 +73,6 @@ class BeerListViewModel(app: Application) : AndroidViewModel(app) {
 
     fun search(input: String) {
         _searchText.value = input
-    }
-
-    fun insertBeerList(beerList: List<Beer>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            AppDatabase.instance.beerDao().insertBeerList(beerList)
-        }
-    }
-
-    fun clearBeerList() {
-        viewModelScope.launch(Dispatchers.IO) {
-            AppDatabase.instance.beerDao().deleteAll()
-        }
     }
 
     enum class SortType {

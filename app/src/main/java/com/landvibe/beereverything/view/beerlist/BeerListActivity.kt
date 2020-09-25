@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -15,7 +16,7 @@ import com.landvibe.beereverything.view.beerdetail.BeerDetailActivity
 class BeerListActivity : AppCompatActivity() {
     private lateinit var viewModel: BeerListViewModel
     private lateinit var beerListAdapter: BeerListAdapter
-    lateinit var binding: ActivityBeerlistBinding
+    private lateinit var binding: ActivityBeerlistBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +24,17 @@ class BeerListActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(BeerListViewModel::class.java)
         beerListAdapter = BeerListAdapter(onItemClickListener())
         binding.lifecycleOwner = this
-        binding.viewmodel = viewModel
+        binding.viewModel = viewModel
         binding.beerlistRecyclerView.adapter = beerListAdapter
+        binding.drawerLayout.beerPick.setOnClickListener {
+            Toast.makeText(this, "맥주 추천", Toast.LENGTH_LONG).show()
+        }
+        binding.drawerLayout.beerToday.setOnClickListener {
+            Toast.makeText(this, "오늘의 맥주", Toast.LENGTH_LONG).show()
+        }
         observeLiveData()
         addEditTextEvent()
+        viewModel.syncBeerListIfNeed()
     }
 
     private fun onItemClickListener(): BeerListAdapter.OnItemClickListener {
@@ -44,8 +52,8 @@ class BeerListActivity : AppCompatActivity() {
 
     private fun addEditTextEvent() {
         binding.searchInput.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                viewModel.search(p0.toString())
+            override fun afterTextChanged(editable: Editable?) {
+                viewModel.search(editable.toString())
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {

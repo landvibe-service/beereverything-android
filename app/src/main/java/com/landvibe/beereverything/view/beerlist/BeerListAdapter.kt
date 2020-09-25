@@ -8,9 +8,7 @@ import com.landvibe.beereverything.data.Beer
 import com.landvibe.beereverything.databinding.ItemBeerlistBinding
 
 class BeerListAdapter(private val itemClickListener: OnItemClickListener) :
-    PagedListAdapter<Beer, BeerListViewHolder>(
-        DIFF_CALLBACK
-    ) {
+    PagedListAdapter<Beer, BeerListViewHolder>(DIFF_CALLBACK) {
 
     override fun onBindViewHolder(holder: BeerListViewHolder, position: Int) {
         val item = getItem(position)

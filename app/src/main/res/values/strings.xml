@@ -31,6 +31,8 @@
     <string name="beer_book">맥주 도감</string>
     <string name="beer_diary">맥주 일기</string>
     <string name="event">이벤트</string>
+    <string name="beer_today">오늘의 맥주</string>
+    <string name="beer_pick">맥주 추천</string>
 
     <!--search menu-->
     <string name="search_hint">검색어를 입력해주세요</string>
