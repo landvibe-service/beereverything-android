@@ -37,6 +37,10 @@
     <dimen name="beer_list_item_beer_name_width">65dp</dimen>
     <dimen name="beer_list_item_beer_score_start_margin">17dp</dimen>
 
+    <!--beer detail -->
+    <dimen name="beer_list_tag_layout_width">40dp</dimen>
+    <dimen name="beer_list_tag_layout_height">20dp</dimen>
+
     <!-- drawer menu -->
     <dimen name="drawer_menu_black_background_width">290dp</dimen>
     <dimen name="drawer_menu_nick_name_top_margin">70dp</dimen>
