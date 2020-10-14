@@ -21,6 +21,7 @@
 
     <!--hint-->
     <string name="hint_beer_country">국가</string>
+    <string name="hint_beer_category">종류</string>
     <string name="hint_beer_volume">도수</string>
     <string name="hint_beer_name">맥주 이름</string>
     <string name="hint_beer_id">맥주 아이디</string>
