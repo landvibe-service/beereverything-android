@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="beerItem"
             type="com.landvibe.beereverything.data.Beer" />
@@ -16,11 +17,12 @@
 
         <ImageView
             android:id="@+id/beer_img"
-            android:scaleType="fitCenter"
-            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/beer_icon" />
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/beer_icon"
+            app:imageFromUrl="@{beerItem.image_url}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/beer_list_banner"
@@ -48,13 +50,22 @@
                     android:text="@{beerItem.country}" />
 
                 <TextView
+                    android:id="@+id/beer_category"
+                    style="@style/BeerItemCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/common_margin_5dp"
+                    android:hint="@string/hint_beer_category"
+                    android:text="@{beerItem.category}" />
+
+                <TextView
                     android:id="@+id/beer_volume"
                     style="@style/BeerItemVolume"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/common_margin_5dp"
                     android:hint="@string/hint_beer_volume"
-                    android:text="@{Double.toString(beerItem.volume)}" />
+                    android:text="@{Double.toString(beerItem.volume) + '%'}" />
 
             </LinearLayout>
 
@@ -64,6 +75,7 @@
                 android:layout_height="@dimen/beer_list_item_banner_bottom_height"
                 android:layout_marginStart="@dimen/common_margin_10dp"
                 android:layout_marginTop="@dimen/common_margin_5dp"
+                android:layout_marginEnd="@dimen/common_margin_10dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/beer_list_banner_top">
