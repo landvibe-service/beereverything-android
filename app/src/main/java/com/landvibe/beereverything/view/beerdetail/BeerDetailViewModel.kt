@@ -10,19 +10,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BeerDetailViewModel : ViewModel() {
-    private val beerListDao = AppDatabase.instance.beerDao()
-
-    private val _beer: MutableLiveData<Beer> = MutableLiveData()
-    val beer: LiveData<Beer> = _beer
 
     private val _closeButtonClick: MutableLiveData<Boolean> = MutableLiveData(false)
     val closeButtonClick: LiveData<Boolean> = _closeButtonClick
-
-    fun loadBeer(id: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _beer.postValue(beerListDao.getBeer(id))
-        }
-    }
 
     fun close() {
         _closeButtonClick.value = true

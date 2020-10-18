@@ -18,7 +18,7 @@ class BeerListAdapter(private val itemClickListener: OnItemClickListener) :
         val item = getItem(position)
         holder.bindTo(item)
         holder.itemView.setOnClickListener {
-            item?.id?.let { itemClickListener.onItemClick(it) }
+            item?.let { itemClickListener.onItemClick(it) }
         }
     }
 
@@ -50,6 +50,6 @@ class BeerListAdapter(private val itemClickListener: OnItemClickListener) :
     }
 
     interface OnItemClickListener {
-        fun onItemClick(id: Int)
+        fun onItemClick(beer: Beer)
     }
 }

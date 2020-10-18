@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.landvibe.beereverything.R
+import com.landvibe.beereverything.data.Beer
 import com.landvibe.beereverything.databinding.ActivityBeerlistBinding
 import com.landvibe.beereverything.view.beerdetail.BeerDetailActivity
 
@@ -39,12 +40,12 @@ class BeerListActivity : AppCompatActivity() {
 
     private fun onItemClickListener(): BeerListAdapter.OnItemClickListener {
         return object : BeerListAdapter.OnItemClickListener {
-            override fun onItemClick(id: Int) {
+            override fun onItemClick(beer: Beer) {
                 startActivity(
                     Intent(
                         this@BeerListActivity,
                         BeerDetailActivity::class.java
-                    ).putExtra(BeerDetailActivity.BEER_ID_KEY, id)
+                    ).putExtra(BeerDetailActivity.EXTRA_BEER_DATA, beer)
                 )
             }
         }

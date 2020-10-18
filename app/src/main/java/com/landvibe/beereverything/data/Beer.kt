@@ -3,6 +3,7 @@ package com.landvibe.beereverything.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Beer(
@@ -16,4 +17,4 @@ data class Beer(
     @ColumnInfo(name = "favorite") var favorite: Boolean = false,
     @ColumnInfo(name = "image_url") var image_url: String? = ""
 //    @ColumnInfo(name = "score") var score: Int? = 0
-)
+) : Serializable
