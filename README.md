@@ -1,6 +1,6 @@
 # beereverything-android
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 kotlin
@@ -28,6 +28,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/KyuJeong"><img src="https://avatars2.githubusercontent.com/u/17950699?v=4" width="100px;" alt=""/><br /><sub><b>KyuJeong</b></sub></a><br /><a href="https://github.com/landvibe-service/beereverything-android/commits?author=KyuJeong" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/gyurim"><img src="https://avatars2.githubusercontent.com/u/31344894?v=4" width="100px;" alt=""/><br /><sub><b>gyurim</b></sub></a><br /><a href="https://github.com/landvibe-service/beereverything-android/commits?author=gyurim" title="Code">💻</a></td>
+    <td align="center"><a href="https://jjjoonngg.github.io"><img src="https://avatars1.githubusercontent.com/u/52276038?v=4" width="100px;" alt=""/><br /><sub><b>Jong Sin Kim</b></sub></a><br /><a href="https://github.com/landvibe-service/beereverything-android/commits?author=JJJoonngg" title="Code">💻</a></td>
   </tr>
 </table>
 
