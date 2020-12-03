@@ -1,0 +1,51 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "KyuJeong",
+      "name": "KyuJeong",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17950699?v=4",
+      "profile": "https://github.com/KyuJeong",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "gyurim",
+      "name": "gyurim",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/31344894?v=4",
+      "profile": "https://github.com/gyurim",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JJJoonngg",
+      "name": "Jong Sin Kim",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/52276038?v=4",
+      "profile": "https://jjjoonngg.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "landvibelegend",
+      "name": "landvibelegend",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12797093?v=4",
+      "profile": "https://github.com/landvibelegend",
+      "contributions": [
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "beereverything-android",
+  "projectOwner": "landvibe-service",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

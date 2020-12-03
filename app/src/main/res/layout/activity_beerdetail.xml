@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.landvibe.beereverything.view.beerdetail.BeerDetailViewModel" />
+
+        <variable
+            name="beerItem"
+            type="com.landvibe.beereverything.data.Beer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_background_color_black">
+
+
+        <ImageView
+            android:id="@+id/beerdetail_img"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/common_margin_24dp"
+            android:src="@drawable/beer_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitCenter"
+            app:imageFromUrl="@{beerItem.image_url}" />
+
+        <ImageButton
+            android:id="@+id/back_main_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin_17dp"
+            android:layout_marginTop="@dimen/common_margin_8dp"
+            android:background="@color/fui_transparent"
+            android:elevation="@dimen/common_elevation_5dp"
+            android:onClick="@{()->viewmodel.close()}"
+            android:src="@drawable/ic_btn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/beerdetail_img" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tag_layout"
+            android:layout_width="@dimen/beer_list_tag_layout_width"
+            android:layout_height="@dimen/beer_list_tag_layout_height"
+            android:layout_marginStart="@dimen/common_margin_26dp"
+            android:layout_marginTop="@dimen/common_margin_34dp"
+            android:background="@drawable/wrap_tag_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/beerdetail_img">
+
+            <TextView
+                android:id="@+id/tag_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{beerItem.category}"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/beerdetail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin_10dp"
+            android:text="@{beerItem.name}"
+            android:textColor="@color/main_background_color_white"
+            android:textSize="@dimen/common_text_20dp"
+            app:layout_constraintBottom_toBottomOf="@id/tag_layout"
+            app:layout_constraintStart_toEndOf="@id/tag_layout"
+            app:layout_constraintTop_toTopOf="@id/tag_layout" />
+
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/common_margin_26dp"
+            android:layout_marginTop="@dimen/common_margin_24dp"
+            android:layout_marginEnd="@dimen/common_margin_26dp"
+            android:background="@color/border_line_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tag_layout" />
+
+
+        <TextView
+            android:id="@+id/country"
+            style="@style/DetailInformationTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_20dp"
+            android:text="@string/country"
+            app:layout_constraintStart_toStartOf="@id/tag_layout"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <TextView
+            android:id="@+id/beer_country"
+            style="@style/DetailInformationTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin_2dp"
+            android:text="@{beerItem.country}"
+            app:layout_constraintStart_toEndOf="@id/country"
+            app:layout_constraintTop_toTopOf="@id/country" />
+
+        <TextView
+            android:id="@+id/volume"
+            style="@style/DetailInformationTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_20dp"
+            android:text="@string/volume"
+            app:layout_constraintStart_toStartOf="@id/tag_layout"
+            app:layout_constraintTop_toBottomOf="@id/country" />
+
+        <TextView
+            android:id="@+id/beer_volume"
+            style="@style/DetailInformationTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin_2dp"
+            android:text="@{Double.toString(beerItem.volume)}"
+            app:layout_constraintStart_toEndOf="@id/volume"
+            app:layout_constraintTop_toTopOf="@id/volume" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

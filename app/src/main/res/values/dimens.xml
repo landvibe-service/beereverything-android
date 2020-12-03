@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_text_12dp">12dp</dimen>
+    <dimen name="common_text_14dp">14dp</dimen>
+    <dimen name="common_text_16dp">16dp</dimen>
+    <dimen name="common_text_18dp">18dp</dimen>
+    <dimen name="common_text_20dp">20dp</dimen>
+    <dimen name="common_text_30dp">30dp</dimen>
+    <dimen name="common_text_50dp">50dp</dimen>
+
+    <dimen name="common_margin_2dp">2dp</dimen>
+    <dimen name="common_margin_5dp">5dp</dimen>
+    <dimen name="common_margin_8dp">8dp</dimen>
+    <dimen name="common_margin_10dp">10dp</dimen>
+    <dimen name="common_margin_15dp">15dp</dimen>
+    <dimen name="common_margin_17dp">17dp</dimen>
+    <dimen name="common_margin_20dp">20dp</dimen>
+    <dimen name="common_margin_24dp">24dp</dimen>
+    <dimen name="common_margin_26dp">26dp</dimen>
+    <dimen name="common_margin_30dp">30dp</dimen>
+    <dimen name="common_margin_34dp">34dp</dimen>
+    <dimen name="common_height_40dp">40dp</dimen>
+    <dimen name="common_height_56dp">56dp</dimen>
+
+    <dimen name="common_elevation_5dp">5dp</dimen>
+
+    <dimen name="common_padding_4dp">4dp</dimen>
+    <dimen name="common_padding_10dp">10dp</dimen>
+
+    <!--beer list item-->
+    <dimen name="beer_list_item_height">164dp</dimen>
+    <dimen name="beer_list_item_width">144dp</dimen>
+    <dimen name="beer_list_item_banner_height">63dp</dimen>
+    <dimen name="beer_list_item_banner_top_height">17dp</dimen>
+    <dimen name="beer_list_item_banner_bottom_height">21dp</dimen>
+    <dimen name="beer_list_item_beer_name_width">65dp</dimen>
+    <dimen name="beer_list_item_beer_score_start_margin">17dp</dimen>
+
+    <!--beer detail -->
+    <dimen name="beer_list_tag_layout_width">40dp</dimen>
+    <dimen name="beer_list_tag_layout_height">20dp</dimen>
+
+    <!-- drawer menu -->
+    <dimen name="drawer_menu_black_background_width">290dp</dimen>
+    <dimen name="drawer_menu_nick_name_top_margin">70dp</dimen>
+    <dimen name="drawer_menu_text_line_start_margin">30dp</dimen>
+    <dimen name="drawer_menu_log_out_bottom_margin">40dp</dimen>
+    <dimen name="drawer_menu_elevation">30dp</dimen>
+
+    <!-- search menu -->
+    <dimen name="search_menu_height">56dp</dimen>
+    <dimen name="search_menu_under_line">1dp</dimen>
+
+
+</resources>

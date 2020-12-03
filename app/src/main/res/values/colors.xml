@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#666666</color>
+    <color name="colorPrimaryDark">#333333</color>
+    <color name="colorAccent">#cccccc</color>
+
+    <color name="main_background_color_white">#ffffff</color>
+    <color name="main_background_color_black">#18181b</color>
+    <color name="beer_list_item_banner_color">#80111111</color>
+    <color name="border_line_gray">#373737</color>
+    <color name="drawer_menu_line">#373737</color>
+    <color name="drawer_menu_text">#f0f0f2</color>
+    <color name="drawer_menu_gray_text">#8b8b8d</color>
+    <color name="search_hint_text">#f0f0f2</color>
+    <color name="yellow_background">#daff00</color>
+    <color name="text_white">#dadde0</color>
 </resources>

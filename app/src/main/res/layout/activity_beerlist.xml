@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.landvibe.beereverything.view.beerlist.BeerListViewModel.SortType" />
+
+        <variable
+            name="viewModel"
+            type="com.landvibe.beereverything.view.beerlist.BeerListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_background_color_black">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_menu_height"
+            android:layout_marginStart="@dimen/common_margin_26dp"
+            android:layout_marginTop="@dimen/common_margin_24dp"
+            android:layout_marginEnd="@dimen/common_margin_26dp"
+            android:background="@color/main_background_color_black"
+            android:visibility="@{viewModel.isSearchMode() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/search_input"
+                style="@style/SearchHintTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/fui_transparent"
+                android:hint="@string/search_hint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/search_cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/fui_transparent"
+                android:onClick="@{()->viewModel.setSearchMode(false)}"
+                android:src="@drawable/ic_img_close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_menu_under_line"
+                android:layout_marginBottom="@dimen/common_margin_2dp"
+                android:background="@color/yellow_background"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/upper_menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_height_56dp"
+            android:layout_marginTop="@dimen/common_margin_24dp"
+            android:visibility="@{viewModel.isSearchMode() == false ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/side_menu_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_margin_26dp"
+                android:background="@color/fui_transparent"
+                android:onClick="@{()->viewModel.setSideMenu(true)}"
+                android:src="@drawable/ic_img_btn_sidemenu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/BannerTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_margin_10dp"
+                android:text="@string/banner_beer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/side_menu_btn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/common_margin_24dp"
+                android:background="@color/fui_transparent"
+                android:onClick="@{()->viewModel.setSearchMode(true)}"
+                android:src="@drawable/ic_icon_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/drawer_layout"
+            layout="@layout/view_drawer_menu"
+            android:layout_width="@dimen/drawer_menu_black_background_width"
+            android:layout_height="0dp"
+            android:visibility="@{viewModel.sideMenuOpen ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/drawer_background_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:elevation="@dimen/common_margin_30dp"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.setSideMenu(false)}"
+            android:visibility="@{viewModel.sideMenuOpen ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/drawer_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnz_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="@dimen/common_margin_26dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <Button
+                android:id="@+id/id_sort_btn"
+                style="@style/SortButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:layout_margin="@dimen/common_margin_5dp"
+                android:background="@drawable/wrap_sort_button"
+                android:onClick="@{()->viewModel.sort(SortType.ID)}"
+                android:text="@string/sort_by_id"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/name_sort_btn"
+                style="@style/SortButton"
+                android:layout_width="84dp"
+                android:layout_height="40dp"
+                android:layout_margin="@dimen/common_margin_5dp"
+                android:background="@drawable/wrap_sort_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{()->viewModel.sort(SortType.NAME)}"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/sort_by_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/id_sort_btn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/beerlist_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="30dp"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnz_layout"
+            app:spanCount="2"
+            tools:ignore="NotSibling"
+            tools:listitem="@layout/item_beerlist" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

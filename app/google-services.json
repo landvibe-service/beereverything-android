@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "755033010944",
+    "firebase_url": "https://landvibe-beereverything.firebaseio.com",
+    "project_id": "landvibe-beereverything",
+    "storage_bucket": "landvibe-beereverything.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755033010944:android:70e863ac2733aefa7779e5",
+        "android_client_info": {
+          "package_name": "com.landvibe.beereverything"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755033010944-ifuebuqgn4hjds7fq75qv6ehju2qf8eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrRqKChZ7XXQ1eVFRpKMURFuNcpUZvS4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755033010944-ifuebuqgn4hjds7fq75qv6ehju2qf8eq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

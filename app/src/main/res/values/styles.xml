@@ -5,6 +5,61 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--No Title Bar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="BannerTextStyle">
+        <item name="android:textSize">@dimen/common_text_20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="BeerItemCountry">
+        <item name="android:textSize">@dimen/common_text_14dp</item>
+        <item name="android:textColor">#fff301</item>
+    </style>
+
+    <style name="BeerItemCategory">
+        <item name="android:textSize">@dimen/common_text_14dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="BeerItemVolume">
+        <item name="android:textSize">@dimen/common_text_14dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="BeerItemName">
+        <item name="android:textSize">@dimen/common_text_18dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="SortButton">
+        <item name="android:textSize">@dimen/common_text_14dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!-- Splash Screen theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
+
+    <style name="SearchHintTheme">
+        <item name="android:textColorHint">@color/search_hint_text</item>
+        <item name="android:textColor">@color/main_background_color_white</item>
+        <item name="android:textSize">@dimen/common_text_16dp</item>
+    </style>
+
+    <style name="DetailInformationTheme">
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/common_text_16dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
